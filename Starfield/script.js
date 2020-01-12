@@ -4,9 +4,10 @@ canvas.width=innerWidth;
 canvas.height=innerHeight;
 
 const ctx=canvas.getContext('2d');
+        
 ctx.translate(canvas.width/2,canvas.height/2);
 let x,y,
-    numberOfStars=400,
+    numberOfStars=1000,
     speed=1000,
     initialSize=1,
     size=20;
@@ -15,7 +16,6 @@ window.addEventListener('resize',function(){
     canvas.height=innerHeight;
     ctx.translate(innerWidth/2,innerHeight/2);
 });
-
 let color=['#eb4d55','#4a69bb','#ed8240','#ffc55c','#b21f66','#8b2f97','#801336']
 window.addEventListener("click",()=>{
     console.log("click");
@@ -40,11 +40,16 @@ function star(x,y,an,color){
     this.draw=function (){
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.size,0,Math.PI * 2,false);
+        
         ctx.fillStyle=color;
+        
         ctx.fill();
+        
 
         if(this.show_trail){
             ctx.beginPath();
+            // ctx.shadowBlur=10;
+            // ctx.shadowColor=color;
             ctx.moveTo(this.lx,this.ly);
             ctx.lineTo(this.x,this.y);
             ctx.stroke();
@@ -72,11 +77,10 @@ function star(x,y,an,color){
 
         if(this.x<=-innerWidth/2 || this.x>=innerWidth/2 || this.y<=-innerHeight/2 || this.y>=innerHeight/2 ){
             if(this.show_trail){
-                this.speed=20
+                this.speed=10
                 this.lm+=this.lm/this.speed;
                 this.lx = this.dirx * this.lm * Math.cos(this.an);
                 this.ly = this.diry * this.lm * Math.sin(this.an);
-                console.log(this.lm,this.m);
                 if(this.lx<=-innerWidth/2 || this.lx>=innerWidth/2 || this.ly<=-innerHeight/2 || this.ly>=innerHeight/2 ){
                     
                     this.show_trail=false;
@@ -91,8 +95,8 @@ function star(x,y,an,color){
                 }
             }
             else{
-                this.x=((Math.random()-0.5)*10);
-                this.y=((Math.random()-0.5)*10);
+                this.x=((Math.random()-0.5)*100);
+                this.y=((Math.random()-0.5)*100);
                 this.an=(Math.random()*Math.PI)-Math.PI/2
                 this.m=Math.sqrt(Math.pow(this.y,2)+Math.pow(this.x,2));
                 this.size=Math.sqrt(this.m)/15;
@@ -103,7 +107,7 @@ function star(x,y,an,color){
             
             // console.log(this.x,this.y);
         }
-        if(Math.abs(this.x)>20 || Math.abs(this.y>20))
+        //if(Math.abs(this.x)>20 || Math.abs(this.y>20))
             this.draw();
     }
 }
