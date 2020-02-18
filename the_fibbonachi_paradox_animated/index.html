@@ -1,0 +1,55 @@
+<html>
+  <head>
+    
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
+    <script src="./inputs.js"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    
+   
+  </head>
+  <body>
+    <button onclick="display_nav()" id="nav_btn">
+        <div class="btn_div"></div>
+        <div class="btn_div"></div>
+        <div class="btn_div"></div>
+    </button>
+    <nav>
+      
+      <h1>
+        The Fibbonachi paradoxs
+      </h1>
+      <div class="fliter">
+        
+        <div class="filters">
+          <div class="options">
+            <h3>
+              Filter
+            </h3>
+            <input type="radio" value="circle" name="shape" onclick="change_shape('circle')">Circle<br>
+            <input type="radio" value="square" name="shape" onclick="change_shape('square')">Square<br>
+            <input type="radio" value="arc" name="shape" onclick="change_shape('arc')">Arc<br>
+            <input type="radio" value="ellipse" name="shape" onclick="change_shape('ellipse')">Ellipse<br>
+            <input type="radio" value="line" name="shape" onclick="change_shape('line')">Line<br>
+            <input type="radio" value="point" name="shape" onclick="change_shape('point')">Point<br>
+          </div>
+          <div class="options">
+            <h3>
+              Color
+            </h3>
+            <input type="radio" value="RGB" name="color" onclick="change_color('rgb')">HUE<br>
+            <input type="radio" value="B&W" name="color" onclick="change_color('b&w')">Black & White<br>
+          </div>
+          <div class="options">
+            <h3>
+              Speed
+            </h3>
+            <input type="range" class="slider" min="1" max="100" value="10" id="freq" onclick="change_frequency(event)">
+          </div>
+        </div>
+        
+      </div>
+    </nav>
+    
+  </body>
+</html>
